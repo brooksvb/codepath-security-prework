@@ -9,6 +9,8 @@
 
     $bill_total = $tip_rate = "";
 
+    $result = $error = false;
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
       // Parse data
       $bill_total = process_input($_POST["bill_total"]);
@@ -17,8 +19,7 @@
       // Evaluate tip
       $tip = calculate_tip((float) $bill_total, (float) $tip_rate);
 
-      // Update page
-
+      $result = true;
     }
 
     /*
@@ -38,17 +39,13 @@
     function calculate_tip($total, $rate) {
       return $total * $rate / 100;
     }
-
-    function display_error($message) {
-
-    }
   ?>
 </head>
 <body>
 
 <!--
   $_SERVER["PHP_SELF"] is a global variable to refers to the current page.
-  htmlspecialchars() will convert the given string from liter characters to HTML
+  htmlspecialchars() will convert the given string from literal characters to HTML
   encoded character string.
   i.e. '<' -> '&lt;'
   This is to prevent XSS if someone appends script onto the url, and <script> tags
@@ -56,20 +53,30 @@
 -->
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
   Bill total:<input type="text" name="bill_total" value="<?php echo $bill_total ?>"><br>
-  <input type="radio" name="tip_rate" value="10">15%<br>
-  <input type="radio" name="tip_rate" value="15">10%<br>
-  <input type="radio" name="tip_rate" value="20">20%<br>
-  <button type="submit">
+  <input type="radio" name="tip_rate" value="10" <?php if (isset($tip_rate) && $tip_rate == "10") echo "checked"; ?>>15%<br>
+  <input type="radio" name="tip_rate" value="15" <?php if (isset($tip_rate) && $tip_rate == "15") echo "checked"; ?>>10%<br>
+  <input type="radio" name="tip_rate" value="20" <?php if (isset($tip_rate) && $tip_rate == "20") echo "checked"; ?>>20%<br>
+  <button type="submit">Calculate</button>
 </form>
 
-<div id="result" style="display:none">
-  <h3>Bill Amount: <span id="bill"></span></h3>
-  <h3>Tip Amount: <span id="tip"></span></h3>
-  <h3>Total to Pay: <span id="total"></span></h3>
-</div>
+<?php
+  // numberformat(num, dec) will format num to dec decimal places
+  if ($result) {
+    echo "<div id='result'>";
+      echo "<h3>Bill Amount: </h3>$";
+      echo numberformat((double)$bill_total, 2);
+      echo "<br><h3>Tip Amount: </h3>$";
+      echo numberformat($tip, 2);
+      echo "<br><h3>Total to Pay: </h3>";
+      echo $total;
+    echo "</div>";
+  } else if ($error) {
+    echo "<div id='error'>";
+      echo "<h2>"; echo $error; echo "</h2>";
+    echo "</div>";
+  }
+?>
 
-<div id="error" style="display:none">
-</div>
 
 </body>
 </html>
