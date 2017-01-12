@@ -1,20 +1,20 @@
-# Pre-work - *Name of App Here*
+# Pre-work - Tip Calculator
 
-**Name of your app** is a tip calculator PHP page.
+This project is a tip calculator PHP page.
 
-Submitted by: **Your Name Here**
+Submitted by: Brooks Van Buren
 
-Time spent: **X** hours spent in total
+Time spent: 4 hours spent in total
 
 ## User Stories
 
 The following **required** functionality is complete:
-* [ ] User can enter a bill amount, choose a tip percentage, and submit the form to see the tip and total values.
-* [ ] Tip percentage choices use a PHP loop to output three radio buttons.
-* [ ] PHP code sets reasonable default values for the form.
-* [ ] PHP code confirms the presence and correct format of submitted values.
-* [ ] Page indicates any form errors which need to be fixed.
-* [ ] Submitted form values are retained when errors or results are shown.
+* [x] User can enter a bill amount, choose a tip percentage, and submit the form to see the tip and total values.
+* [x] Tip percentage choices use a PHP loop to output three radio buttons.
+* [x] PHP code sets reasonable default values for the form.
+* [x] PHP code confirms the presence and correct format of submitted values.
+* [x] Page indicates any form errors which need to be fixed.
+* [x] Submitted form values are retained when errors or results are shown.
 
 The following **optional** features are implemented:
 * [ ] Add support for custom tip percentage
@@ -22,23 +22,24 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-* [ ] List anything else that you can get done to improve the functionality!
-
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://imgur.com/b75c2bae-b1df-4fb9-bb97-1db52423855c' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+I had a bit of a hard time getting WAMP to work. I wanted to set up a server to
+use my project directory, but I could not get a custom directory to work properly.
+I had to make do with pasting my file into the default www folder that the WAMP
+server uses.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright 2017 Brooks Van Buren
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
